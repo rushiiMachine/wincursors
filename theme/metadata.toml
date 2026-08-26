@@ -1,0 +1,417 @@
+[theme]
+name = 'wincursors'
+description = 'Original cursors adapted from Windows 10.'
+author = 'rushii (https://github.com/rushiimachine)'
+version = '1.0'
+
+# shape_size is the canvas every SVG is scaled to; hotspots are expressed in
+# its 64x64 coordinate space and accurse rescales them per output size.
+# The config-level hotspots are only a fallback (32/32 = neutral center);
+# every shape below sets its own. mirror = 1 enables the flips flag, which is
+# used solely to synthesize the mirrored right_ptr from left_ptr.
+[config]
+shape_size = 64
+x_hotspot = 32
+y_hotspot = 32
+mirror = 1
+xcur_sizes = [24, 32, 48, 64]
+cleanup = ["hycur", "xcur"]
+
+# The standard Windows 10 arrow: white fill, black outline, tip at the very
+# top-left corner. The default pointer for most situations.
+[cursors.left_ptr]
+x_hotspot = 1
+y_hotspot = 0
+symlinks = [
+  'arrow',
+  'default',
+  'top_left_arrow',
+]
+
+# left_ptr mirrored (tip at top-right), flipped at build time from the same
+# SVG. Requested by RTL contexts and drafting tools.
+[cursors.right_ptr]
+x_hotspot = 1
+y_hotspot = 0
+flips = 1
+symlinks = [
+  'draft_large',
+  'draft_small',
+]
+
+# The arrow with a small question mark beside it - "help is available".
+# Hotspot stays on the arrow tip, as in Windows.
+[cursors.question_arrow]
+x_hotspot = 2
+y_hotspot = 2
+symlinks = [
+  'help',
+  'left_ptr_help',
+  'whats_this',
+  '5c6cd98b3f3ebcb1f9c7f1c204630408',
+  'd9ce0ab605698f320427677b458ad60b',
+]
+
+# The Windows link-select pointing hand, fingertip at the top edge.
+# The standard hyperlink/web pointer.
+[cursors.hand2]
+x_hotspot = 14
+y_hotspot = 0
+symlinks = [
+  'pointer',
+  'pointing_hand',
+  'hand1',
+  'e29285e634086352946a0e7090d73106',
+]
+
+# The pointing hand with a person silhouette badge - Windows' "person
+# select", shown when picking a contact or share target.
+[cursors.person]
+x_hotspot = 14
+y_hotspot = 0
+
+# The pointing hand with a map-pin badge - Windows' "pin select", shown when
+# dragging something pinnable (e.g. a browser tab).
+[cursors.pin]
+x_hotspot = 15
+y_hotspot = 0
+
+# A writing pen with its tip at the top-left corner; inking and signatures.
+[cursors.pencil]
+x_hotspot = 0
+y_hotspot = 0
+symlinks = [
+  'draft',
+]
+
+# The I-beam text caret; hotspot at its center where the insertion point is.
+[cursors.xterm]
+x_hotspot = 32
+y_hotspot = 32
+symlinks = [
+  'ibeam',
+  'text',
+]
+
+# A thin registration-style plus; precision selection. Hotspot centered.
+[cursors.crosshair]
+x_hotspot = 33
+y_hotspot = 33
+symlinks = [
+  'cross',
+  'cross_reverse',
+  'diamond_cross',
+]
+
+# A circle with a diagonal slash - "not allowed", the Windows "unavailable"
+# cursor. Hotspot at the center of the circle.
+[cursors.crossed_circle]
+x_hotspot = 18
+y_hotspot = 19
+symlinks = [
+  'not-allowed',
+  'forbidden',
+  'circle',
+  '03b6e0fcb3499374a867c041f52298f0',
+]
+
+# The four-headed move arrow; hotspot on the shaft crossing.
+[cursors.move]
+x_hotspot = 23
+y_hotspot = 23
+symlinks = [
+  'all-scroll',
+  'fleur',
+  'size_all',
+]
+
+# Horizontal double-headed resize arrow. The hotspot sits slightly left of
+# and above the canvas center, matching the off-center anchor Windows uses.
+[cursors.sb_h_double_arrow]
+x_hotspot = 26
+y_hotspot = 12
+symlinks = [
+  'ew-resize',
+  'col-resize',
+  'h_double_arrow',
+  'size_hor',
+  'split_h',
+  '028006030e0e7ebffc7f7070c0600140',
+  '043a9f68147c53184671403ffa811cc5',
+  '14fef782d02440884392942c11205230',
+]
+
+# Vertical counterpart of sb_h_double_arrow.
+[cursors.sb_v_double_arrow]
+x_hotspot = 10
+y_hotspot = 23
+symlinks = [
+  'ns-resize',
+  'row-resize',
+  'v_double_arrow',
+  'double_arrow',
+  'size_ver',
+  'split_v',
+  '00008160000006810000408080010102',
+  '2870a09082c103050810ffdffffe0204',
+  'c07385c7190e701020ff7ffffd08103c',
+]
+
+# Double arrow along the / (NE-SW) diagonal. Qt maps SizeBDiagCursor to the
+# / diagonal, which is why size_bdiag (not size_fdiag) lives here.
+[cursors.fd_double_arrow]
+x_hotspot = 17
+y_hotspot = 17
+symlinks = [
+  'nesw-resize',
+  'size_bdiag',
+  '50585d75b494802d0151028115016902',
+  'fcf1c3c7cd4491d801f1e1c78f100000',
+]
+
+# Double arrow along the \ (NW-SE) diagonal.
+[cursors.bd_double_arrow]
+x_hotspot = 17
+y_hotspot = 17
+symlinks = [
+  'nwse-resize',
+  'size_fdiag',
+  '38c5dff7c7b8962045400281044508d2',
+  'c7088f0f3e6c8088236ef8e1e3e70000',
+]
+
+# Single up arrow - Windows' "alternate select". Hotspot at the tip.
+[cursors.sb_up_arrow]
+x_hotspot = 13
+y_hotspot = 4
+symlinks = [
+  'up-arrow',
+]
+
+# The arrow with a round shortcut-arrow badge at its lower right; shown when
+# a drag will create a link/alias.
+[cursors.alias]
+x_hotspot = 10
+y_hotspot = 8
+symlinks = [
+  '3085a0e285430894940527032f8b26df',
+  '640fb0e74195791501fd1ed57b41487f',
+  'a2a266d0498c3104214a47bd64ab0fc8',
+  'link',
+]
+
+# Corner resize cursors: a double arrow anchored at the head pointing into
+# the respective window corner.
+[cursors.bottom_left_corner]
+x_hotspot = 8
+y_hotspot = 55
+symlinks = [
+  'll_angle',
+  'sw-resize',
+]
+
+[cursors.bottom_right_corner]
+x_hotspot = 55
+y_hotspot = 55
+symlinks = [
+  'lr_angle',
+  'se-resize',
+]
+
+[cursors.top_left_corner]
+x_hotspot = 16
+y_hotspot = 15
+symlinks = [
+  'ul_angle',
+  'nw-resize',
+]
+
+[cursors.top_right_corner]
+x_hotspot = 43
+y_hotspot = 16
+symlinks = [
+  'ur_angle',
+  'ne-resize',
+]
+
+# Edge resize cursors: a double arrow with a bar marking the window edge
+# being dragged; the hotspot sits on that bar.
+[cursors.bottom_side]
+x_hotspot = 31
+y_hotspot = 57
+symlinks = [
+  's-resize',
+]
+
+[cursors.top_side]
+x_hotspot = 31
+y_hotspot = 6
+symlinks = [
+  'n-resize',
+]
+
+[cursors.left_side]
+x_hotspot = 6
+y_hotspot = 31
+symlinks = [
+  'w-resize',
+]
+
+[cursors.right_side]
+x_hotspot = 57
+y_hotspot = 31
+symlinks = [
+  'e-resize',
+]
+
+# A thick plus for spreadsheet-style cell selection (CSS "cell", X "plus").
+[cursors.cell]
+x_hotspot = 29
+y_hotspot = 29
+symlinks = [
+  'plus',
+]
+
+# The plain arrow glyph drawn centered in the canvas; a few apps request a
+# centered pointer explicitly.
+[cursors.center_ptr]
+x_hotspot = 29
+y_hotspot = 12
+
+# An eyedropper; hotspot at the pick-up tip in the upper right.
+[cursors.color-picker]
+x_hotspot = 36
+y_hotspot = 24
+
+# The arrow with a menu badge; CSS "context-menu" (e.g. touch right-click).
+[cursors.context-menu]
+x_hotspot = 10
+y_hotspot = 8
+
+# The arrow with a plus badge; shown when a drag will copy (CSS "copy").
+[cursors.copy]
+x_hotspot = 10
+y_hotspot = 8
+symlinks = [
+  '1081e37283d90000800003c07f3ef6bf',
+  '6407b0e94181790501fd1e167b474872',
+  'b66166c04f8c3109214a4fbd64a50fc8',
+  'dnd-copy',
+]
+
+# Scrollbar arrows: double-headed glyphs anchored at the head matching the
+# scroll direction name.
+[cursors.down-arrow]
+x_hotspot = 31
+y_hotspot = 43
+symlinks = [
+  'sb_down_arrow',
+]
+
+[cursors.left-arrow]
+x_hotspot = 18
+y_hotspot = 29
+symlinks = [
+  'sb_left_arrow',
+]
+
+[cursors.right-arrow]
+x_hotspot = 45
+y_hotspot = 29
+symlinks = [
+  'sb_right_arrow',
+]
+
+# An open hand - drag-and-drop move; also covers "grabbing"/"closedhand",
+# mirroring the reference theme's structure.
+[cursors.dnd-move]
+x_hotspot = 31
+y_hotspot = 31
+symlinks = [
+  '4498f0e0c1937ffe01fd06f973665830',
+  '9081237383d90e509aa00f00170e968f',
+  'fcf21c00b30f7e3f83fe0dfd12e71cff',
+  'closedhand',
+  'dnd-none',
+  'grabbing',
+]
+
+# The open hand with a red slash-circle badge - cannot drop here (drag
+# variant). Hotspot stays on the palm so the hand does not jump.
+[cursors.dnd-no-drop]
+x_hotspot = 32
+y_hotspot = 32
+
+# The arrow with a red slash-circle badge - CSS "no-drop".
+[cursors.no-drop]
+x_hotspot = 10
+y_hotspot = 8
+
+# An open palm - grab/pan (X "grab", Qt OpenHand).
+[cursors.openhand]
+x_hotspot = 30
+y_hotspot = 28
+symlinks = [
+  'grab',
+]
+
+# A Jolly Roger - X's "kill/destroy window" pointer.
+[cursors.pirate]
+x_hotspot = 32
+y_hotspot = 31
+
+# An I-beam rotated 90 degrees - vertical text insertion (CSS
+# "vertical-text"). Hotspot at the glyph center.
+[cursors.vertical-text]
+x_hotspot = 31
+y_hotspot = 30
+
+# The theme logo glyph; some Wayland clients request this name as a
+# fallback/default pointer.
+[cursors.wayland-cursor]
+x_hotspot = 31
+y_hotspot = 30
+
+# A large X - X's generic "unknown/undefined" pointer.
+[cursors.X_cursor]
+x_hotspot = 33
+y_hotspot = 31
+symlinks = [
+  'x-cursor',
+]
+
+# A magnifying glass; hotspot at the lens center, not the handle.
+[cursors.zoom-in]
+x_hotspot = 22
+y_hotspot = 24
+
+[cursors.zoom-out]
+x_hotspot = 22
+y_hotspot = 24
+
+# Busy spinner: a blue ring rotating through 23 frames at 30 ms each.
+# Hotspot at the ring center.
+[cursors.wait]
+x_hotspot = 31
+y_hotspot = 30
+animated = 1
+anim_delay = 30
+symlinks = [
+  'watch',
+  'spinning',
+  '0426c94ea35c87780ff01dc239897213',
+]
+
+# "Working in background": the arrow with a small spinning ring at its
+# lower right, 23 frames at 30 ms. Hotspot stays on the arrow tip.
+[cursors.progress]
+x_hotspot = 10
+y_hotspot = 8
+animated = 1
+anim_delay = 30
+symlinks = [
+  'left_ptr_watch',
+  'half-busy',
+  '00000000000000020006000e7e9ffc3f',
+  '08e8e1c95fe2fc01f976f1e063a24ccd',
+]

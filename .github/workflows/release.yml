@@ -1,0 +1,48 @@
+name: Build & Release
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y librsvg2-bin x11-apps
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          python-version: '3.13'
+
+      - name: Build theme
+        run: |
+          uv sync
+          uv run accurse theme/metadata.toml
+
+      - name: Package
+        run: |
+          mv AC-theme wincursors
+          zip -r wincursors.zip wincursors
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: wincursors
+          path: wincursors.zip
+
+      - name: Create release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: wincursors.zip
+          generate_release_notes: true

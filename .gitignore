@@ -1,0 +1,10 @@
+# Build output
+AC-theme/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Stray rsvg-convert output (`rsvg-convert -o -`)
+-
