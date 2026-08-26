@@ -11,6 +11,7 @@ rm -rf AC-theme && uv run accurse theme/metadata.toml  # compile the theme into 
 
 - System deps (Arch): `sudo pacman -S librsvg xorg-xcursorgen` — accurse shells out to `rsvg-convert` and `xcursorgen`.
 - accurse **aborts if `AC-theme/` exists**; always remove it first.
+- accurse **exit codes are inverted** (see gotchas); when scripting the build, gate on its output, e.g. `rm -rf AC-theme && uv run accurse theme/metadata.toml 2>&1 | tee /tmp/accurse.log; grep -q "^Packaging done!" /tmp/accurse.log`.
 - `uv run` from repo root; there is no installed package (`[tool.uv] package = false`).
 - Releases: pushing a `v*` tag runs `.github/workflows/release.yml` (build → tarball/zip → GitHub release). CI deps differ from Arch: `apt-get install librsvg2-bin x11-apps` (xcursorgen lives in x11-apps there).
 
@@ -27,4 +28,5 @@ rm -rf AC-theme && uv run accurse theme/metadata.toml  # compile the theme into 
 - Alias convention (verified against Qt's `qwaylandcursor.cpp`): `size_bdiag` ↔ `nesw-resize` (/ diagonal), `size_fdiag` ↔ `nwse-resize` (\ diagonal) — counterintuitive; don't "fix" it. Hash-like symlink names (e.g. `08e8e1c9…`) are legacy X hash aliases — keep them.
 - Several SVGs carry an intentional vertical-flip `<g transform="matrix(1 0 0 -1 0 32)">` wrapper from their original authoring — it is part of the artwork; don't remove it.
 - `rsvg-convert -o -` writes a file literally named `-`; omit `-o` to get stdout.
+- accurse 0.1.0's **exit codes are inverted**: its `main()` returns `True` on success / `False` on abort, and the console-script wrapper does `sys.exit(main())`, so a successful build exits **1** and an aborted one (`Aborting!`) exits **0**. Never trust the exit code — gate on the final `Packaging done!` line of its output instead.
 - Verify builds by parsing the compiled artifacts (Xcur chunk headers in `cursors/*`, `meta.hl` inside the `.hlc` zips) and rendering contact sheets with hotspot crosshairs — not by adding tests.

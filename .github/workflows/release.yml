@@ -27,7 +27,10 @@ jobs:
       - name: Build theme
         run: |
           uv sync
-          uv run accurse theme/metadata.toml
+          # accurse 0.1.0 inverts exit codes (exits 1 on success, 0 on abort),
+          # so gate on its success marker instead of the exit status.
+          uv run accurse theme/metadata.toml 2>&1 | tee accurse-build.log || true
+          grep -q "^Packaging done!" accurse-build.log
 
       - name: Package
         run: |
